@@ -19,6 +19,12 @@ sudo: false
 matrix:
   include :
     - os: linux
+      compiler: gcc
+      env: AUTOTOOLS=no COVERAGE=yes BUILD=static
+    - os: linux
+      compiler: clang
+      env: AUTOTOOLS=yes COVERAGE=no BUILD=shared
+    - os: linux
       compiler: clang++-4.0
       addons:
         apt:
@@ -31,7 +37,8 @@ matrix:
       addons:
         apt:
           sources:
-            - llvm-toolchain-trusty
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise
           packages:
             - clang-5.0
     # - os: linux
